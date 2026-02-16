@@ -20,7 +20,8 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
             )
             .oauth2ResourceServer(oauth2 -> oauth2
-                .jwt(Customizer.withDefaults()) // ✅ FIXED: must pass a Customizer
+                .
+                jwt(Customizer.withDefaults()) // ✅ FIXED: must pass a Customizer
             );
 
         return http.build();

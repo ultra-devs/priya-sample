@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleRestController {
 	
 	
-	@GetMapping("/hello") //PutMapping DeleMapping
+	@GetMapping("/customers/hello") //PutMapping DeleMapping
 	public String sayHello()
 	{
 		return "Hello World";
