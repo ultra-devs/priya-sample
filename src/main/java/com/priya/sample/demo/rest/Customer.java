@@ -1,17 +1,9 @@
 package com.priya.sample.demo.rest;
 
 public class Customer {
-	int id=-1;
+
 	String name;
 	String location;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
