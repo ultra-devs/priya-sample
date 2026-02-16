@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "ff5b7b87-7a28-43d3-93ad-35d6bba46429",
+		"name": "Spring-Learn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5378516"
+	},
+	"item": [
+		{
+			"name": "hello-world",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"getToken\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.globals.set(\"access_token\",jsonData.access_token);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"client_id\":\"s4hqoiKoMAAIpR6HuUdkxpXOxxCswZ7x\",\r\n    \"client_secret\":\"BH4BfhLSRMbEIbmCkVH9W32X6j2gO6uabgJ1mtf6aIbOHbRRYzxVBn-Fe9u8fjnx\",\r\n     \"audience\":\"https://customerapi.example.com\",\r\n     \"grant_type\":\"client_credentials\"\r\n   }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-5vgjnzmflot865hn.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-5vgjnzmflot865hn",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create-Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shashank singh\",\r\n    \"location\": \"NJ,USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/rest/customer/7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qWnQzM2JXMEYtUTNScmowcnJUZSJ9.eyJpc3MiOiJodHRwczovL2Rldi01dmdqbnptZmxvdDg2NWhuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJzNGhxb2lLb01BQUlwUjZIdVVka3hwWE94eENzd1o3eEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9jdXN0b21lcmFwaS5leGFtcGxlLmNvbSIsImlhdCI6MTc3MTIxMDkzNiwiZXhwIjoxNzcxMjk3MzM2LCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJhenAiOiJzNGhxb2lLb01BQUlwUjZIdVVka3hwWE94eENzd1o3eCJ9.coNhAqqxGHL366BqVE0zYs5tqq81XRYdTV7lYoCNm0F-b79OgdhQLkAnBVdC5Y3dgdHnVUfkoSCEZ3-neV6Wm2fK2KExnGuaJw5K-Ds01ipY1Wt9PgFsCaKB4XbN3al4mFCwz6f15QH3hgm4lC8myCguBIer_RJ2rtUU3KTrrQZ9lVQtlwThlClw3SgPx8hIwqCWtEkGCoNIcxA2ZaXj7IligGuOV9dFX-_ZqRr_iDoRy-NS1IGoILPB5w7Tafw5U9OAQ0YDXG2oR482fJqERFSIkL53mERCz-CrEFOyZSKG_rpauoDv7H0YKECTUn-SEJBvaPl6Wk-MkpwzrsOa1A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"USAa\",\n    \"email\": \"shashank\",\n    \"userid\": \"shanky.nitc\",\n    \"location\": \"shsingh4@in.bm.com\",\n    \"phonenumber\": \"7324925952\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/customers/cfdb28de-7684-4859-b882-54b5ea07a132",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customers",
+						"cfdb28de-7684-4859-b882-54b5ea07a132"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
